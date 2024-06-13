@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+      "allowSyntheticDefaultImports": true,
+      "jsx": "react-native",
+      "lib": ["dom", "esnext"],
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "moduleResolution": "node",
+      "module": "commonjs",
+      "exactOptionalPropertyTypes": true,
+      "noEmit": true,
+      "target": "es6",
+      "skipLibCheck": true,
+      "resolveJsonModule": true,
+      "strict": true,
+      "baseUrl": ".",
+      "paths": {
+        "@Components/*": ["components/*"],
+        "@Assets/*": ["assets/*"],
+        "@Utils/*": ["utils/*"],
+        "@Hooks/*": ["hooks/*"],
+        "@Types/*": ["types/*"],
+        "@Constants/*": ["constants/*"],
+        "@Services/*": ["services/*"],
+        "@Styles/*": ["styles/*"],
+        "@App/*": ["app/*"],
+        "@Screens/*": ["screens/*"],
+        "@Icons/*": ["icons/*"],
+        "@State/*": ["state/*"],
+      }
+  },
+  "extends": "expo/tsconfig.base",
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js",
+    "tsconfig.json",
+    "tsconfig.base.json"
+  ],
+  "include": [
+    "**/*",
+    "node_modules/nativewind",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
+  ],
+}

@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "experiments": {
+      "typedRoutes": true,
+      "tsconfigPaths": true
+    },
+    "scheme": "myapp",
+    "name": "GridHabitTracker",
+    "slug": "GridHabitTracker",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon3.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#1E1E26",
+    "splash": {
+      "image": "./assets/splash5.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1E1E26"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon2.png",
+        "backgroundColor": "#1E1E26"
+      },
+      "softwareKeyboardLayoutMode": "pan",
+      "package": "com.mustapollo.GridHabitTracker"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      [
+        "@vonovak/react-native-theme-control",
+        {
+          "mode": "dark"
+        }
+      ],
+      "expo-router",
+      "expo-font",
+      "expo-secure-store"
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "f1b8cf54-03d9-4987-a2aa-80b0a9588eb4"
+      }
+    }
+  }
+}

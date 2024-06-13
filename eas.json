@@ -1,0 +1,29 @@
+{
+  "cli": {
+    "version": ">= 3.15.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_ELECTRIC_SERVICE": "http://localhost:5133",
+        "EXPO_PUBLIC_ELECTRIC_PG_PROXY_PORT": "65432",
+        "EXPO_PUBLIC_SUPABASE_URL": "https://xxxxx.supabase.co",
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "xxxxx"
+      }
+    },
+    "production": {
+      "distribution": "store",
+      "autoIncrement": true
+      
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
