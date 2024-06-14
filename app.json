@@ -9,7 +9,7 @@
     "slug": "GridHabitTracker",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon3.png",
+    "icon": "./assets/icon5.png",
     "userInterfaceStyle": "dark",
     "backgroundColor": "#1E1E26",
     "splash": {
@@ -25,7 +25,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon2.png",
+        "foregroundImage": "./assets/adaptive-icon3.png",
         "backgroundColor": "#1E1E26"
       },
       "softwareKeyboardLayoutMode": "pan",
