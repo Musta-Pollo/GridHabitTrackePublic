@@ -1,1 +1,0 @@
-ALTER TABLE habits ADD COLUMN habit_order2 INTEGER NOT NULL;

@@ -27,6 +27,10 @@ export type Habits = {
    * @zod.number.int().gte(-2147483648).lte(2147483647)
    */
   amount: number | null
+  /**
+   * @zod.number.int().gte(-2147483648).lte(2147483647)
+   */
+  habit_order2: number | null
   time: Date | null
   monday: boolean | null
   tuesday: boolean | null
@@ -79,14 +83,6 @@ export type Habits = {
    * @zod.string.uuid()
    */
   sunday_not_id: string
-  /**
-   * @zod.number.int().gte(-2147483648).lte(2147483647)
-   */
-  habit_order: number | null
-  /**
-   * @zod.number.int().gte(-2147483648).lte(2147483647)
-   */
-  habit_order2: number
 }
 
 /**
@@ -986,13 +982,11 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
 
   export type HabitsAvgAggregateOutputType = {
     amount: number | null
-    habit_order: number | null
     habit_order2: number | null
   }
 
   export type HabitsSumAggregateOutputType = {
     amount: number | null
-    habit_order: number | null
     habit_order2: number | null
   }
 
@@ -1001,6 +995,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type: habit_type | null
     period: period | null
     amount: number | null
+    habit_order2: number | null
     time: Date | null
     monday: boolean | null
     tuesday: boolean | null
@@ -1023,8 +1018,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id: string | null
     saturday_not_id: string | null
     sunday_not_id: string | null
-    habit_order: number | null
-    habit_order2: number | null
   }
 
   export type HabitsMaxAggregateOutputType = {
@@ -1032,6 +1025,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type: habit_type | null
     period: period | null
     amount: number | null
+    habit_order2: number | null
     time: Date | null
     monday: boolean | null
     tuesday: boolean | null
@@ -1054,8 +1048,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id: string | null
     saturday_not_id: string | null
     sunday_not_id: string | null
-    habit_order: number | null
-    habit_order2: number | null
   }
 
   export type HabitsCountAggregateOutputType = {
@@ -1063,6 +1055,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type: number
     period: number
     amount: number
+    habit_order2: number
     time: number
     monday: number
     tuesday: number
@@ -1085,21 +1078,17 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id: number
     saturday_not_id: number
     sunday_not_id: number
-    habit_order: number
-    habit_order2: number
     _all: number
   }
 
 
   export type HabitsAvgAggregateInputType = {
     amount?: true
-    habit_order?: true
     habit_order2?: true
   }
 
   export type HabitsSumAggregateInputType = {
     amount?: true
-    habit_order?: true
     habit_order2?: true
   }
 
@@ -1108,6 +1097,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: true
     period?: true
     amount?: true
+    habit_order2?: true
     time?: true
     monday?: true
     tuesday?: true
@@ -1130,8 +1120,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: true
     saturday_not_id?: true
     sunday_not_id?: true
-    habit_order?: true
-    habit_order2?: true
   }
 
   export type HabitsMaxAggregateInputType = {
@@ -1139,6 +1127,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: true
     period?: true
     amount?: true
+    habit_order2?: true
     time?: true
     monday?: true
     tuesday?: true
@@ -1161,8 +1150,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: true
     saturday_not_id?: true
     sunday_not_id?: true
-    habit_order?: true
-    habit_order2?: true
   }
 
   export type HabitsCountAggregateInputType = {
@@ -1170,6 +1157,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: true
     period?: true
     amount?: true
+    habit_order2?: true
     time?: true
     monday?: true
     tuesday?: true
@@ -1192,8 +1180,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: true
     saturday_not_id?: true
     sunday_not_id?: true
-    habit_order?: true
-    habit_order2?: true
     _all?: true
   }
 
@@ -1294,6 +1280,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type: habit_type | null
     period: period | null
     amount: number | null
+    habit_order2: number | null
     time: Date | null
     monday: boolean | null
     tuesday: boolean | null
@@ -1316,8 +1303,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id: string
     saturday_not_id: string
     sunday_not_id: string
-    habit_order: number | null
-    habit_order2: number
     _count: HabitsCountAggregateOutputType | null
     _avg: HabitsAvgAggregateOutputType | null
     _sum: HabitsSumAggregateOutputType | null
@@ -1344,6 +1329,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: boolean
     period?: boolean
     amount?: boolean
+    habit_order2?: boolean
     time?: boolean
     monday?: boolean
     tuesday?: boolean
@@ -1366,8 +1352,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: boolean
     saturday_not_id?: boolean
     sunday_not_id?: boolean
-    habit_order?: boolean
-    habit_order2?: boolean
     habits_completions?: boolean | Habits$habits_completionsArgs
     _count?: boolean | HabitsCountOutputTypeArgs
   }
@@ -3212,6 +3196,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type: 'habit_type',
     period: 'period',
     amount: 'amount',
+    habit_order2: 'habit_order2',
     time: 'time',
     monday: 'monday',
     tuesday: 'tuesday',
@@ -3233,9 +3218,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     thursday_not_id: 'thursday_not_id',
     friday_not_id: 'friday_not_id',
     saturday_not_id: 'saturday_not_id',
-    sunday_not_id: 'sunday_not_id',
-    habit_order: 'habit_order',
-    habit_order2: 'habit_order2'
+    sunday_not_id: 'sunday_not_id'
   };
 
   export type HabitsScalarFieldEnum = (typeof HabitsScalarFieldEnum)[keyof typeof HabitsScalarFieldEnum]
@@ -3291,6 +3274,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: Enumhabit_typeNullableFilter | habit_type | null
     period?: EnumperiodNullableFilter | period | null
     amount?: IntNullableFilter | number | null
+    habit_order2?: IntNullableFilter | number | null
     time?: DateTimeNullableFilter | Date | string | null
     monday?: BoolNullableFilter | boolean | null
     tuesday?: BoolNullableFilter | boolean | null
@@ -3313,8 +3297,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: UuidFilter | string
     saturday_not_id?: UuidFilter | string
     sunday_not_id?: UuidFilter | string
-    habit_order?: IntNullableFilter | number | null
-    habit_order2?: IntFilter | number
     habits_completions?: Habits_completionsListRelationFilter
   }
 
@@ -3323,6 +3305,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: SortOrder
     period?: SortOrder
     amount?: SortOrder
+    habit_order2?: SortOrder
     time?: SortOrder
     monday?: SortOrder
     tuesday?: SortOrder
@@ -3345,8 +3328,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: SortOrder
     saturday_not_id?: SortOrder
     sunday_not_id?: SortOrder
-    habit_order?: SortOrder
-    habit_order2?: SortOrder
     habits_completions?: Habits_completionsOrderByRelationAggregateInput
   }
 
@@ -3359,6 +3340,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: SortOrder
     period?: SortOrder
     amount?: SortOrder
+    habit_order2?: SortOrder
     time?: SortOrder
     monday?: SortOrder
     tuesday?: SortOrder
@@ -3381,8 +3363,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: SortOrder
     saturday_not_id?: SortOrder
     sunday_not_id?: SortOrder
-    habit_order?: SortOrder
-    habit_order2?: SortOrder
     _count?: HabitsCountOrderByAggregateInput
     _avg?: HabitsAvgOrderByAggregateInput
     _max?: HabitsMaxOrderByAggregateInput
@@ -3398,6 +3378,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: Enumhabit_typeNullableWithAggregatesFilter | habit_type | null
     period?: EnumperiodNullableWithAggregatesFilter | period | null
     amount?: IntNullableWithAggregatesFilter | number | null
+    habit_order2?: IntNullableWithAggregatesFilter | number | null
     time?: DateTimeNullableWithAggregatesFilter | Date | string | null
     monday?: BoolNullableWithAggregatesFilter | boolean | null
     tuesday?: BoolNullableWithAggregatesFilter | boolean | null
@@ -3420,8 +3401,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: UuidWithAggregatesFilter | string
     saturday_not_id?: UuidWithAggregatesFilter | string
     sunday_not_id?: UuidWithAggregatesFilter | string
-    habit_order?: IntNullableWithAggregatesFilter | number | null
-    habit_order2?: IntWithAggregatesFilter | number
   }
 
   export type Habits_completionsWhereInput = {
@@ -3476,6 +3455,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: habit_type | null
     period?: period | null
     amount?: number | null
+    habit_order2?: number | null
     time?: Date | string | null
     monday?: boolean | null
     tuesday?: boolean | null
@@ -3498,8 +3478,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id: string
     saturday_not_id: string
     sunday_not_id: string
-    habit_order?: number | null
-    habit_order2: number
     habits_completions?: Habits_completionsCreateNestedManyWithoutHabitsInput
   }
 
@@ -3508,6 +3486,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: habit_type | null
     period?: period | null
     amount?: number | null
+    habit_order2?: number | null
     time?: Date | string | null
     monday?: boolean | null
     tuesday?: boolean | null
@@ -3530,8 +3509,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id: string
     saturday_not_id: string
     sunday_not_id: string
-    habit_order?: number | null
-    habit_order2: number
     habits_completions?: Habits_completionsUncheckedCreateNestedManyWithoutHabitsInput
   }
 
@@ -3540,6 +3517,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: NullableEnumhabit_typeFieldUpdateOperationsInput | habit_type | null
     period?: NullableEnumperiodFieldUpdateOperationsInput | period | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    habit_order2?: NullableIntFieldUpdateOperationsInput | number | null
     time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     monday?: NullableBoolFieldUpdateOperationsInput | boolean | null
     tuesday?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -3562,8 +3540,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: StringFieldUpdateOperationsInput | string
     saturday_not_id?: StringFieldUpdateOperationsInput | string
     sunday_not_id?: StringFieldUpdateOperationsInput | string
-    habit_order?: NullableIntFieldUpdateOperationsInput | number | null
-    habit_order2?: IntFieldUpdateOperationsInput | number
     habits_completions?: Habits_completionsUpdateManyWithoutHabitsNestedInput
   }
 
@@ -3572,6 +3548,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: NullableEnumhabit_typeFieldUpdateOperationsInput | habit_type | null
     period?: NullableEnumperiodFieldUpdateOperationsInput | period | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    habit_order2?: NullableIntFieldUpdateOperationsInput | number | null
     time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     monday?: NullableBoolFieldUpdateOperationsInput | boolean | null
     tuesday?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -3594,8 +3571,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: StringFieldUpdateOperationsInput | string
     saturday_not_id?: StringFieldUpdateOperationsInput | string
     sunday_not_id?: StringFieldUpdateOperationsInput | string
-    habit_order?: NullableIntFieldUpdateOperationsInput | number | null
-    habit_order2?: IntFieldUpdateOperationsInput | number
     habits_completions?: Habits_completionsUncheckedUpdateManyWithoutHabitsNestedInput
   }
 
@@ -3604,6 +3579,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: habit_type | null
     period?: period | null
     amount?: number | null
+    habit_order2?: number | null
     time?: Date | string | null
     monday?: boolean | null
     tuesday?: boolean | null
@@ -3626,8 +3602,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id: string
     saturday_not_id: string
     sunday_not_id: string
-    habit_order?: number | null
-    habit_order2: number
   }
 
   export type HabitsUpdateManyMutationInput = {
@@ -3635,6 +3609,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: NullableEnumhabit_typeFieldUpdateOperationsInput | habit_type | null
     period?: NullableEnumperiodFieldUpdateOperationsInput | period | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    habit_order2?: NullableIntFieldUpdateOperationsInput | number | null
     time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     monday?: NullableBoolFieldUpdateOperationsInput | boolean | null
     tuesday?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -3657,8 +3632,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: StringFieldUpdateOperationsInput | string
     saturday_not_id?: StringFieldUpdateOperationsInput | string
     sunday_not_id?: StringFieldUpdateOperationsInput | string
-    habit_order?: NullableIntFieldUpdateOperationsInput | number | null
-    habit_order2?: IntFieldUpdateOperationsInput | number
   }
 
   export type HabitsUncheckedUpdateManyInput = {
@@ -3666,6 +3639,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: NullableEnumhabit_typeFieldUpdateOperationsInput | habit_type | null
     period?: NullableEnumperiodFieldUpdateOperationsInput | period | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    habit_order2?: NullableIntFieldUpdateOperationsInput | number | null
     time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     monday?: NullableBoolFieldUpdateOperationsInput | boolean | null
     tuesday?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -3688,8 +3662,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: StringFieldUpdateOperationsInput | string
     saturday_not_id?: StringFieldUpdateOperationsInput | string
     sunday_not_id?: StringFieldUpdateOperationsInput | string
-    habit_order?: NullableIntFieldUpdateOperationsInput | number | null
-    habit_order2?: IntFieldUpdateOperationsInput | number
   }
 
   export type Habits_completionsCreateInput = {
@@ -3827,17 +3799,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     not?: NestedUuidNullableFilter | string | null
   }
 
-  export type IntFilter = {
-    equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntFilter | number
-  }
-
   export type Habits_completionsListRelationFilter = {
     every?: Habits_completionsWhereInput
     some?: Habits_completionsWhereInput
@@ -3853,6 +3814,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: SortOrder
     period?: SortOrder
     amount?: SortOrder
+    habit_order2?: SortOrder
     time?: SortOrder
     monday?: SortOrder
     tuesday?: SortOrder
@@ -3875,13 +3837,10 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: SortOrder
     saturday_not_id?: SortOrder
     sunday_not_id?: SortOrder
-    habit_order?: SortOrder
-    habit_order2?: SortOrder
   }
 
   export type HabitsAvgOrderByAggregateInput = {
     amount?: SortOrder
-    habit_order?: SortOrder
     habit_order2?: SortOrder
   }
 
@@ -3890,6 +3849,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: SortOrder
     period?: SortOrder
     amount?: SortOrder
+    habit_order2?: SortOrder
     time?: SortOrder
     monday?: SortOrder
     tuesday?: SortOrder
@@ -3912,8 +3872,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: SortOrder
     saturday_not_id?: SortOrder
     sunday_not_id?: SortOrder
-    habit_order?: SortOrder
-    habit_order2?: SortOrder
   }
 
   export type HabitsMinOrderByAggregateInput = {
@@ -3921,6 +3879,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: SortOrder
     period?: SortOrder
     amount?: SortOrder
+    habit_order2?: SortOrder
     time?: SortOrder
     monday?: SortOrder
     tuesday?: SortOrder
@@ -3943,13 +3902,10 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: SortOrder
     saturday_not_id?: SortOrder
     sunday_not_id?: SortOrder
-    habit_order?: SortOrder
-    habit_order2?: SortOrder
   }
 
   export type HabitsSumOrderByAggregateInput = {
     amount?: SortOrder
-    habit_order?: SortOrder
     habit_order2?: SortOrder
   }
 
@@ -4059,22 +4015,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     _max?: NestedStringNullableFilter
   }
 
-  export type IntWithAggregatesFilter = {
-    equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntWithAggregatesFilter | number
-    _count?: NestedIntFilter
-    _avg?: NestedFloatFilter
-    _sum?: NestedIntFilter
-    _min?: NestedIntFilter
-    _max?: NestedIntFilter
-  }
-
   export type HabitsRelationFilter = {
     is?: HabitsWhereInput
     isNot?: HabitsWhereInput
@@ -4148,14 +4088,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type Habits_completionsUpdateManyWithoutHabitsNestedInput = {
@@ -4277,17 +4209,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     not?: NestedUuidNullableFilter | string | null
   }
 
-  export type NestedIntFilter = {
-    equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntFilter | number
-  }
-
   export type NestedUuidWithAggregatesFilter = {
     equals?: string
     in?: Enumerable<string>
@@ -4300,6 +4221,17 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     _count?: NestedIntFilter
     _min?: NestedStringFilter
     _max?: NestedStringFilter
+  }
+
+  export type NestedIntFilter = {
+    equals?: number
+    in?: Enumerable<number>
+    notIn?: Enumerable<number>
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedIntFilter | number
   }
 
   export type NestedStringFilter = {
@@ -4416,33 +4348,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     _max?: NestedStringNullableFilter
   }
 
-  export type NestedIntWithAggregatesFilter = {
-    equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntWithAggregatesFilter | number
-    _count?: NestedIntFilter
-    _avg?: NestedFloatFilter
-    _sum?: NestedIntFilter
-    _min?: NestedIntFilter
-    _max?: NestedIntFilter
-  }
-
-  export type NestedFloatFilter = {
-    equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedFloatFilter | number
-  }
-
   export type Habits_completionsCreateWithoutHabitsInput = {
     id: string
     user_id: string
@@ -4499,6 +4404,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: habit_type | null
     period?: period | null
     amount?: number | null
+    habit_order2?: number | null
     time?: Date | string | null
     monday?: boolean | null
     tuesday?: boolean | null
@@ -4521,8 +4427,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id: string
     saturday_not_id: string
     sunday_not_id: string
-    habit_order?: number | null
-    habit_order2: number
   }
 
   export type HabitsUncheckedCreateWithoutHabits_completionsInput = {
@@ -4530,6 +4434,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: habit_type | null
     period?: period | null
     amount?: number | null
+    habit_order2?: number | null
     time?: Date | string | null
     monday?: boolean | null
     tuesday?: boolean | null
@@ -4552,8 +4457,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id: string
     saturday_not_id: string
     sunday_not_id: string
-    habit_order?: number | null
-    habit_order2: number
   }
 
   export type HabitsCreateOrConnectWithoutHabits_completionsInput = {
@@ -4571,6 +4474,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: NullableEnumhabit_typeFieldUpdateOperationsInput | habit_type | null
     period?: NullableEnumperiodFieldUpdateOperationsInput | period | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    habit_order2?: NullableIntFieldUpdateOperationsInput | number | null
     time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     monday?: NullableBoolFieldUpdateOperationsInput | boolean | null
     tuesday?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -4593,8 +4497,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: StringFieldUpdateOperationsInput | string
     saturday_not_id?: StringFieldUpdateOperationsInput | string
     sunday_not_id?: StringFieldUpdateOperationsInput | string
-    habit_order?: NullableIntFieldUpdateOperationsInput | number | null
-    habit_order2?: IntFieldUpdateOperationsInput | number
   }
 
   export type HabitsUncheckedUpdateWithoutHabits_completionsInput = {
@@ -4602,6 +4504,7 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     habit_type?: NullableEnumhabit_typeFieldUpdateOperationsInput | habit_type | null
     period?: NullableEnumperiodFieldUpdateOperationsInput | period | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    habit_order2?: NullableIntFieldUpdateOperationsInput | number | null
     time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     monday?: NullableBoolFieldUpdateOperationsInput | boolean | null
     tuesday?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -4624,8 +4527,6 @@ export type InputJsonValue = null | string | number | boolean | InputJsonObject 
     friday_not_id?: StringFieldUpdateOperationsInput | string
     saturday_not_id?: StringFieldUpdateOperationsInput | string
     sunday_not_id?: StringFieldUpdateOperationsInput | string
-    habit_order?: NullableIntFieldUpdateOperationsInput | number | null
-    habit_order2?: IntFieldUpdateOperationsInput | number
   }
 
   export type Habits_completionsCreateManyHabitsInput = {

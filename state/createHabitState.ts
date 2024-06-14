@@ -63,6 +63,7 @@ export const createHabitState: StateSlice<CreateHabitStateType> = (
     }),
   reset: () => {
     set((state) => {
+      state.createHabit.habitId = initialCreateHabitState.habitId;
       state.createHabit.name = initialCreateHabitState.name;
       state.createHabit.icon = initialCreateHabitState.icon;
       state.createHabit.color = initialCreateHabitState.color;

@@ -193,9 +193,9 @@ export default function Layout() {
       try {
         let electric;
         if (Platform.OS === "web") {
-          electric = await initWaSQLite("electric6", config);
+          electric = await initWaSQLite("electric7.db", config);
         } else {
-          electric = await initExpoSQLite("electric6", config);
+          electric = await initExpoSQLite("electric7.db", config);
         }
         console.log("Electric: ", electric);
         setElectric(electric);

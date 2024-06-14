@@ -15,6 +15,7 @@ web-build/
 *.p8
 *.p12
 *.key
+*.apk
 *.mobileprovision
 
 # Metro

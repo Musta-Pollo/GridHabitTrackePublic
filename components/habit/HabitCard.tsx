@@ -150,9 +150,6 @@ export function HabitCardListeningForHabitChanges({
             },
           },
         },
-        orderBy: {
-          habit_order: "asc",
-        },
       }),
     [db, habitId]
   );
