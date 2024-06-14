@@ -35,11 +35,11 @@ export async function initExpoSQLite(dbName: string, config: ElectricConfig) {
     ElectricURL: ELECTRIC_URL,
   });
 
-  const { openDatabase } = await import("expo-sqlite");
-  const { electrify } = await import("electric-sql/expo");
+  const { openDatabaseSync } = await import("expo-sqlite/next");
+  const { electrify } = await import("electric-sql/expo-next");
 
   console.log("Database opened");
-  const conn = openDatabase(dbName);
+  const conn = openDatabaseSync(dbName);
 
   console.log("Database electrified");
   try {

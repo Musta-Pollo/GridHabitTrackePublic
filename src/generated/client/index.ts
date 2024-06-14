@@ -12,7 +12,7 @@ import migrations from './migrations';
 // ENUMS
 /////////////////////////////////////////
 
-export const HabitsScalarFieldEnumSchema = z.enum(['id','habit_type','period','amount','time','monday','tuesday','wednesday','thursday','friday','saturday','sunday','name','icon','color','team_id','user_id','electric_user_id','description','monday_not_id','tuesday_not_id','wednesday_not_id','thursday_not_id','friday_not_id','saturday_not_id','sunday_not_id','habit_order','habit_order2']);
+export const HabitsScalarFieldEnumSchema = z.enum(['id','habit_type','period','amount','habit_order2','time','monday','tuesday','wednesday','thursday','friday','saturday','sunday','name','icon','color','team_id','user_id','electric_user_id','description','monday_not_id','tuesday_not_id','wednesday_not_id','thursday_not_id','friday_not_id','saturday_not_id','sunday_not_id']);
 
 export const Habits_completionsScalarFieldEnumSchema = z.enum(['id','user_id','habit_id','electric_user_id','date']);
 
@@ -43,6 +43,7 @@ export const HabitsSchema = z.object({
   period: periodSchema.nullable(),
   id: z.string().uuid(),
   amount: z.number().int().gte(-2147483648).lte(2147483647).nullable(),
+  habit_order2: z.number().int().gte(-2147483648).lte(2147483647).nullable(),
   time: z.coerce.date().nullable(),
   monday: z.boolean().nullable(),
   tuesday: z.boolean().nullable(),
@@ -65,8 +66,6 @@ export const HabitsSchema = z.object({
   friday_not_id: z.string().uuid(),
   saturday_not_id: z.string().uuid(),
   sunday_not_id: z.string().uuid(),
-  habit_order: z.number().int().gte(-2147483648).lte(2147483647).nullable(),
-  habit_order2: z.number().int().gte(-2147483648).lte(2147483647),
 })
 
 export type Habits = z.infer<typeof HabitsSchema>
@@ -115,6 +114,7 @@ export const HabitsSelectSchema: z.ZodType<Prisma.HabitsSelect> = z.object({
   habit_type: z.boolean().optional(),
   period: z.boolean().optional(),
   amount: z.boolean().optional(),
+  habit_order2: z.boolean().optional(),
   time: z.boolean().optional(),
   monday: z.boolean().optional(),
   tuesday: z.boolean().optional(),
@@ -137,8 +137,6 @@ export const HabitsSelectSchema: z.ZodType<Prisma.HabitsSelect> = z.object({
   friday_not_id: z.boolean().optional(),
   saturday_not_id: z.boolean().optional(),
   sunday_not_id: z.boolean().optional(),
-  habit_order: z.boolean().optional(),
-  habit_order2: z.boolean().optional(),
   habits_completions: z.union([z.boolean(),z.lazy(() => Habits_completionsFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => HabitsCountOutputTypeArgsSchema)]).optional(),
 }).strict()
@@ -177,6 +175,7 @@ export const HabitsWhereInputSchema: z.ZodType<Prisma.HabitsWhereInput> = z.obje
   habit_type: z.union([ z.lazy(() => Enumhabit_typeNullableFilterSchema),z.lazy(() => habit_typeSchema) ]).optional().nullable(),
   period: z.union([ z.lazy(() => EnumperiodNullableFilterSchema),z.lazy(() => periodSchema) ]).optional().nullable(),
   amount: z.union([ z.lazy(() => IntNullableFilterSchema),z.number() ]).optional().nullable(),
+  habit_order2: z.union([ z.lazy(() => IntNullableFilterSchema),z.number() ]).optional().nullable(),
   time: z.union([ z.lazy(() => DateTimeNullableFilterSchema),z.coerce.date() ]).optional().nullable(),
   monday: z.union([ z.lazy(() => BoolNullableFilterSchema),z.boolean() ]).optional().nullable(),
   tuesday: z.union([ z.lazy(() => BoolNullableFilterSchema),z.boolean() ]).optional().nullable(),
@@ -199,8 +198,6 @@ export const HabitsWhereInputSchema: z.ZodType<Prisma.HabitsWhereInput> = z.obje
   friday_not_id: z.union([ z.lazy(() => UuidFilterSchema),z.string() ]).optional(),
   saturday_not_id: z.union([ z.lazy(() => UuidFilterSchema),z.string() ]).optional(),
   sunday_not_id: z.union([ z.lazy(() => UuidFilterSchema),z.string() ]).optional(),
-  habit_order: z.union([ z.lazy(() => IntNullableFilterSchema),z.number() ]).optional().nullable(),
-  habit_order2: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
   habits_completions: z.lazy(() => Habits_completionsListRelationFilterSchema).optional()
 }).strict();
 
@@ -209,6 +206,7 @@ export const HabitsOrderByWithRelationInputSchema: z.ZodType<Prisma.HabitsOrderB
   habit_type: z.lazy(() => SortOrderSchema).optional(),
   period: z.lazy(() => SortOrderSchema).optional(),
   amount: z.lazy(() => SortOrderSchema).optional(),
+  habit_order2: z.lazy(() => SortOrderSchema).optional(),
   time: z.lazy(() => SortOrderSchema).optional(),
   monday: z.lazy(() => SortOrderSchema).optional(),
   tuesday: z.lazy(() => SortOrderSchema).optional(),
@@ -231,8 +229,6 @@ export const HabitsOrderByWithRelationInputSchema: z.ZodType<Prisma.HabitsOrderB
   friday_not_id: z.lazy(() => SortOrderSchema).optional(),
   saturday_not_id: z.lazy(() => SortOrderSchema).optional(),
   sunday_not_id: z.lazy(() => SortOrderSchema).optional(),
-  habit_order: z.lazy(() => SortOrderSchema).optional(),
-  habit_order2: z.lazy(() => SortOrderSchema).optional(),
   habits_completions: z.lazy(() => Habits_completionsOrderByRelationAggregateInputSchema).optional()
 }).strict();
 
@@ -245,6 +241,7 @@ export const HabitsOrderByWithAggregationInputSchema: z.ZodType<Prisma.HabitsOrd
   habit_type: z.lazy(() => SortOrderSchema).optional(),
   period: z.lazy(() => SortOrderSchema).optional(),
   amount: z.lazy(() => SortOrderSchema).optional(),
+  habit_order2: z.lazy(() => SortOrderSchema).optional(),
   time: z.lazy(() => SortOrderSchema).optional(),
   monday: z.lazy(() => SortOrderSchema).optional(),
   tuesday: z.lazy(() => SortOrderSchema).optional(),
@@ -267,8 +264,6 @@ export const HabitsOrderByWithAggregationInputSchema: z.ZodType<Prisma.HabitsOrd
   friday_not_id: z.lazy(() => SortOrderSchema).optional(),
   saturday_not_id: z.lazy(() => SortOrderSchema).optional(),
   sunday_not_id: z.lazy(() => SortOrderSchema).optional(),
-  habit_order: z.lazy(() => SortOrderSchema).optional(),
-  habit_order2: z.lazy(() => SortOrderSchema).optional(),
   _count: z.lazy(() => HabitsCountOrderByAggregateInputSchema).optional(),
   _avg: z.lazy(() => HabitsAvgOrderByAggregateInputSchema).optional(),
   _max: z.lazy(() => HabitsMaxOrderByAggregateInputSchema).optional(),
@@ -284,6 +279,7 @@ export const HabitsScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.Habits
   habit_type: z.union([ z.lazy(() => Enumhabit_typeNullableWithAggregatesFilterSchema),z.lazy(() => habit_typeSchema) ]).optional().nullable(),
   period: z.union([ z.lazy(() => EnumperiodNullableWithAggregatesFilterSchema),z.lazy(() => periodSchema) ]).optional().nullable(),
   amount: z.union([ z.lazy(() => IntNullableWithAggregatesFilterSchema),z.number() ]).optional().nullable(),
+  habit_order2: z.union([ z.lazy(() => IntNullableWithAggregatesFilterSchema),z.number() ]).optional().nullable(),
   time: z.union([ z.lazy(() => DateTimeNullableWithAggregatesFilterSchema),z.coerce.date() ]).optional().nullable(),
   monday: z.union([ z.lazy(() => BoolNullableWithAggregatesFilterSchema),z.boolean() ]).optional().nullable(),
   tuesday: z.union([ z.lazy(() => BoolNullableWithAggregatesFilterSchema),z.boolean() ]).optional().nullable(),
@@ -306,8 +302,6 @@ export const HabitsScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.Habits
   friday_not_id: z.union([ z.lazy(() => UuidWithAggregatesFilterSchema),z.string() ]).optional(),
   saturday_not_id: z.union([ z.lazy(() => UuidWithAggregatesFilterSchema),z.string() ]).optional(),
   sunday_not_id: z.union([ z.lazy(() => UuidWithAggregatesFilterSchema),z.string() ]).optional(),
-  habit_order: z.union([ z.lazy(() => IntNullableWithAggregatesFilterSchema),z.number() ]).optional().nullable(),
-  habit_order2: z.union([ z.lazy(() => IntWithAggregatesFilterSchema),z.number() ]).optional(),
 }).strict();
 
 export const Habits_completionsWhereInputSchema: z.ZodType<Prisma.Habits_completionsWhereInput> = z.object({
@@ -362,6 +356,7 @@ export const HabitsCreateInputSchema: z.ZodType<Prisma.HabitsCreateInput> = z.ob
   habit_type: z.lazy(() => habit_typeSchema).optional().nullable(),
   period: z.lazy(() => periodSchema).optional().nullable(),
   amount: z.number().int().gte(-2147483648).lte(2147483647).optional().nullable(),
+  habit_order2: z.number().int().gte(-2147483648).lte(2147483647).optional().nullable(),
   time: z.coerce.date().optional().nullable(),
   monday: z.boolean().optional().nullable(),
   tuesday: z.boolean().optional().nullable(),
@@ -384,8 +379,6 @@ export const HabitsCreateInputSchema: z.ZodType<Prisma.HabitsCreateInput> = z.ob
   friday_not_id: z.string().uuid(),
   saturday_not_id: z.string().uuid(),
   sunday_not_id: z.string().uuid(),
-  habit_order: z.number().int().gte(-2147483648).lte(2147483647).optional().nullable(),
-  habit_order2: z.number().int().gte(-2147483648).lte(2147483647),
   habits_completions: z.lazy(() => Habits_completionsCreateNestedManyWithoutHabitsInputSchema).optional()
 }).strict();
 
@@ -394,6 +387,7 @@ export const HabitsUncheckedCreateInputSchema: z.ZodType<Prisma.HabitsUncheckedC
   habit_type: z.lazy(() => habit_typeSchema).optional().nullable(),
   period: z.lazy(() => periodSchema).optional().nullable(),
   amount: z.number().int().gte(-2147483648).lte(2147483647).optional().nullable(),
+  habit_order2: z.number().int().gte(-2147483648).lte(2147483647).optional().nullable(),
   time: z.coerce.date().optional().nullable(),
   monday: z.boolean().optional().nullable(),
   tuesday: z.boolean().optional().nullable(),
@@ -416,8 +410,6 @@ export const HabitsUncheckedCreateInputSchema: z.ZodType<Prisma.HabitsUncheckedC
   friday_not_id: z.string().uuid(),
   saturday_not_id: z.string().uuid(),
   sunday_not_id: z.string().uuid(),
-  habit_order: z.number().int().gte(-2147483648).lte(2147483647).optional().nullable(),
-  habit_order2: z.number().int().gte(-2147483648).lte(2147483647),
   habits_completions: z.lazy(() => Habits_completionsUncheckedCreateNestedManyWithoutHabitsInputSchema).optional()
 }).strict();
 
@@ -426,6 +418,7 @@ export const HabitsUpdateInputSchema: z.ZodType<Prisma.HabitsUpdateInput> = z.ob
   habit_type: z.union([ z.lazy(() => habit_typeSchema),z.lazy(() => NullableEnumhabit_typeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   period: z.union([ z.lazy(() => periodSchema),z.lazy(() => NullableEnumperiodFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   amount: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  habit_order2: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   monday: z.union([ z.boolean(),z.lazy(() => NullableBoolFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   tuesday: z.union([ z.boolean(),z.lazy(() => NullableBoolFieldUpdateOperationsInputSchema) ]).optional().nullable(),
@@ -448,8 +441,6 @@ export const HabitsUpdateInputSchema: z.ZodType<Prisma.HabitsUpdateInput> = z.ob
   friday_not_id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   saturday_not_id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   sunday_not_id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  habit_order: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  habit_order2: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   habits_completions: z.lazy(() => Habits_completionsUpdateManyWithoutHabitsNestedInputSchema).optional()
 }).strict();
 
@@ -458,6 +449,7 @@ export const HabitsUncheckedUpdateInputSchema: z.ZodType<Prisma.HabitsUncheckedU
   habit_type: z.union([ z.lazy(() => habit_typeSchema),z.lazy(() => NullableEnumhabit_typeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   period: z.union([ z.lazy(() => periodSchema),z.lazy(() => NullableEnumperiodFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   amount: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  habit_order2: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   monday: z.union([ z.boolean(),z.lazy(() => NullableBoolFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   tuesday: z.union([ z.boolean(),z.lazy(() => NullableBoolFieldUpdateOperationsInputSchema) ]).optional().nullable(),
@@ -480,8 +472,6 @@ export const HabitsUncheckedUpdateInputSchema: z.ZodType<Prisma.HabitsUncheckedU
   friday_not_id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   saturday_not_id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   sunday_not_id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  habit_order: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  habit_order2: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   habits_completions: z.lazy(() => Habits_completionsUncheckedUpdateManyWithoutHabitsNestedInputSchema).optional()
 }).strict();
 
@@ -490,6 +480,7 @@ export const HabitsCreateManyInputSchema: z.ZodType<Prisma.HabitsCreateManyInput
   habit_type: z.lazy(() => habit_typeSchema).optional().nullable(),
   period: z.lazy(() => periodSchema).optional().nullable(),
   amount: z.number().int().gte(-2147483648).lte(2147483647).optional().nullable(),
+  habit_order2: z.number().int().gte(-2147483648).lte(2147483647).optional().nullable(),
   time: z.coerce.date().optional().nullable(),
   monday: z.boolean().optional().nullable(),
   tuesday: z.boolean().optional().nullable(),
@@ -511,9 +502,7 @@ export const HabitsCreateManyInputSchema: z.ZodType<Prisma.HabitsCreateManyInput
   thursday_not_id: z.string().uuid(),
   friday_not_id: z.string().uuid(),
   saturday_not_id: z.string().uuid(),
-  sunday_not_id: z.string().uuid(),
-  habit_order: z.number().int().gte(-2147483648).lte(2147483647).optional().nullable(),
-  habit_order2: z.number().int().gte(-2147483648).lte(2147483647)
+  sunday_not_id: z.string().uuid()
 }).strict();
 
 export const HabitsUpdateManyMutationInputSchema: z.ZodType<Prisma.HabitsUpdateManyMutationInput> = z.object({
@@ -521,6 +510,7 @@ export const HabitsUpdateManyMutationInputSchema: z.ZodType<Prisma.HabitsUpdateM
   habit_type: z.union([ z.lazy(() => habit_typeSchema),z.lazy(() => NullableEnumhabit_typeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   period: z.union([ z.lazy(() => periodSchema),z.lazy(() => NullableEnumperiodFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   amount: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  habit_order2: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   monday: z.union([ z.boolean(),z.lazy(() => NullableBoolFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   tuesday: z.union([ z.boolean(),z.lazy(() => NullableBoolFieldUpdateOperationsInputSchema) ]).optional().nullable(),
@@ -543,8 +533,6 @@ export const HabitsUpdateManyMutationInputSchema: z.ZodType<Prisma.HabitsUpdateM
   friday_not_id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   saturday_not_id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   sunday_not_id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  habit_order: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  habit_order2: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const HabitsUncheckedUpdateManyInputSchema: z.ZodType<Prisma.HabitsUncheckedUpdateManyInput> = z.object({
@@ -552,6 +540,7 @@ export const HabitsUncheckedUpdateManyInputSchema: z.ZodType<Prisma.HabitsUnchec
   habit_type: z.union([ z.lazy(() => habit_typeSchema),z.lazy(() => NullableEnumhabit_typeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   period: z.union([ z.lazy(() => periodSchema),z.lazy(() => NullableEnumperiodFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   amount: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  habit_order2: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   monday: z.union([ z.boolean(),z.lazy(() => NullableBoolFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   tuesday: z.union([ z.boolean(),z.lazy(() => NullableBoolFieldUpdateOperationsInputSchema) ]).optional().nullable(),
@@ -574,8 +563,6 @@ export const HabitsUncheckedUpdateManyInputSchema: z.ZodType<Prisma.HabitsUnchec
   friday_not_id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   saturday_not_id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   sunday_not_id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  habit_order: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  habit_order2: z.union([ z.number().int().gte(-2147483648).lte(2147483647),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const Habits_completionsCreateInputSchema: z.ZodType<Prisma.Habits_completionsCreateInput> = z.object({
@@ -713,17 +700,6 @@ export const UuidNullableFilterSchema: z.ZodType<Prisma.UuidNullableFilter> = z.
   not: z.union([ z.string(),z.lazy(() => NestedUuidNullableFilterSchema) ]).optional().nullable(),
 }).strict();
 
-export const IntFilterSchema: z.ZodType<Prisma.IntFilter> = z.object({
-  equals: z.number().optional(),
-  in: z.number().array().optional(),
-  notIn: z.number().array().optional(),
-  lt: z.number().optional(),
-  lte: z.number().optional(),
-  gt: z.number().optional(),
-  gte: z.number().optional(),
-  not: z.union([ z.number(),z.lazy(() => NestedIntFilterSchema) ]).optional(),
-}).strict();
-
 export const Habits_completionsListRelationFilterSchema: z.ZodType<Prisma.Habits_completionsListRelationFilter> = z.object({
   every: z.lazy(() => Habits_completionsWhereInputSchema).optional(),
   some: z.lazy(() => Habits_completionsWhereInputSchema).optional(),
@@ -739,6 +715,7 @@ export const HabitsCountOrderByAggregateInputSchema: z.ZodType<Prisma.HabitsCoun
   habit_type: z.lazy(() => SortOrderSchema).optional(),
   period: z.lazy(() => SortOrderSchema).optional(),
   amount: z.lazy(() => SortOrderSchema).optional(),
+  habit_order2: z.lazy(() => SortOrderSchema).optional(),
   time: z.lazy(() => SortOrderSchema).optional(),
   monday: z.lazy(() => SortOrderSchema).optional(),
   tuesday: z.lazy(() => SortOrderSchema).optional(),
@@ -760,14 +737,11 @@ export const HabitsCountOrderByAggregateInputSchema: z.ZodType<Prisma.HabitsCoun
   thursday_not_id: z.lazy(() => SortOrderSchema).optional(),
   friday_not_id: z.lazy(() => SortOrderSchema).optional(),
   saturday_not_id: z.lazy(() => SortOrderSchema).optional(),
-  sunday_not_id: z.lazy(() => SortOrderSchema).optional(),
-  habit_order: z.lazy(() => SortOrderSchema).optional(),
-  habit_order2: z.lazy(() => SortOrderSchema).optional()
+  sunday_not_id: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const HabitsAvgOrderByAggregateInputSchema: z.ZodType<Prisma.HabitsAvgOrderByAggregateInput> = z.object({
   amount: z.lazy(() => SortOrderSchema).optional(),
-  habit_order: z.lazy(() => SortOrderSchema).optional(),
   habit_order2: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
@@ -776,6 +750,7 @@ export const HabitsMaxOrderByAggregateInputSchema: z.ZodType<Prisma.HabitsMaxOrd
   habit_type: z.lazy(() => SortOrderSchema).optional(),
   period: z.lazy(() => SortOrderSchema).optional(),
   amount: z.lazy(() => SortOrderSchema).optional(),
+  habit_order2: z.lazy(() => SortOrderSchema).optional(),
   time: z.lazy(() => SortOrderSchema).optional(),
   monday: z.lazy(() => SortOrderSchema).optional(),
   tuesday: z.lazy(() => SortOrderSchema).optional(),
@@ -797,9 +772,7 @@ export const HabitsMaxOrderByAggregateInputSchema: z.ZodType<Prisma.HabitsMaxOrd
   thursday_not_id: z.lazy(() => SortOrderSchema).optional(),
   friday_not_id: z.lazy(() => SortOrderSchema).optional(),
   saturday_not_id: z.lazy(() => SortOrderSchema).optional(),
-  sunday_not_id: z.lazy(() => SortOrderSchema).optional(),
-  habit_order: z.lazy(() => SortOrderSchema).optional(),
-  habit_order2: z.lazy(() => SortOrderSchema).optional()
+  sunday_not_id: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const HabitsMinOrderByAggregateInputSchema: z.ZodType<Prisma.HabitsMinOrderByAggregateInput> = z.object({
@@ -807,6 +780,7 @@ export const HabitsMinOrderByAggregateInputSchema: z.ZodType<Prisma.HabitsMinOrd
   habit_type: z.lazy(() => SortOrderSchema).optional(),
   period: z.lazy(() => SortOrderSchema).optional(),
   amount: z.lazy(() => SortOrderSchema).optional(),
+  habit_order2: z.lazy(() => SortOrderSchema).optional(),
   time: z.lazy(() => SortOrderSchema).optional(),
   monday: z.lazy(() => SortOrderSchema).optional(),
   tuesday: z.lazy(() => SortOrderSchema).optional(),
@@ -828,14 +802,11 @@ export const HabitsMinOrderByAggregateInputSchema: z.ZodType<Prisma.HabitsMinOrd
   thursday_not_id: z.lazy(() => SortOrderSchema).optional(),
   friday_not_id: z.lazy(() => SortOrderSchema).optional(),
   saturday_not_id: z.lazy(() => SortOrderSchema).optional(),
-  sunday_not_id: z.lazy(() => SortOrderSchema).optional(),
-  habit_order: z.lazy(() => SortOrderSchema).optional(),
-  habit_order2: z.lazy(() => SortOrderSchema).optional()
+  sunday_not_id: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const HabitsSumOrderByAggregateInputSchema: z.ZodType<Prisma.HabitsSumOrderByAggregateInput> = z.object({
   amount: z.lazy(() => SortOrderSchema).optional(),
-  habit_order: z.lazy(() => SortOrderSchema).optional(),
   habit_order2: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
@@ -945,22 +916,6 @@ export const UuidNullableWithAggregatesFilterSchema: z.ZodType<Prisma.UuidNullab
   _max: z.lazy(() => NestedStringNullableFilterSchema).optional()
 }).strict();
 
-export const IntWithAggregatesFilterSchema: z.ZodType<Prisma.IntWithAggregatesFilter> = z.object({
-  equals: z.number().optional(),
-  in: z.number().array().optional(),
-  notIn: z.number().array().optional(),
-  lt: z.number().optional(),
-  lte: z.number().optional(),
-  gt: z.number().optional(),
-  gte: z.number().optional(),
-  not: z.union([ z.number(),z.lazy(() => NestedIntWithAggregatesFilterSchema) ]).optional(),
-  _count: z.lazy(() => NestedIntFilterSchema).optional(),
-  _avg: z.lazy(() => NestedFloatFilterSchema).optional(),
-  _sum: z.lazy(() => NestedIntFilterSchema).optional(),
-  _min: z.lazy(() => NestedIntFilterSchema).optional(),
-  _max: z.lazy(() => NestedIntFilterSchema).optional()
-}).strict();
-
 export const HabitsRelationFilterSchema: z.ZodType<Prisma.HabitsRelationFilter> = z.object({
   is: z.lazy(() => HabitsWhereInputSchema).optional(),
   isNot: z.lazy(() => HabitsWhereInputSchema).optional()
@@ -1034,14 +989,6 @@ export const NullableBoolFieldUpdateOperationsInputSchema: z.ZodType<Prisma.Null
 
 export const NullableStringFieldUpdateOperationsInputSchema: z.ZodType<Prisma.NullableStringFieldUpdateOperationsInput> = z.object({
   set: z.string().optional().nullable()
-}).strict();
-
-export const IntFieldUpdateOperationsInputSchema: z.ZodType<Prisma.IntFieldUpdateOperationsInput> = z.object({
-  set: z.number().optional(),
-  increment: z.number().optional(),
-  decrement: z.number().optional(),
-  multiply: z.number().optional(),
-  divide: z.number().optional()
 }).strict();
 
 export const Habits_completionsUpdateManyWithoutHabitsNestedInputSchema: z.ZodType<Prisma.Habits_completionsUpdateManyWithoutHabitsNestedInput> = z.object({
@@ -1163,17 +1110,6 @@ export const NestedUuidNullableFilterSchema: z.ZodType<Prisma.NestedUuidNullable
   not: z.union([ z.string(),z.lazy(() => NestedUuidNullableFilterSchema) ]).optional().nullable(),
 }).strict();
 
-export const NestedIntFilterSchema: z.ZodType<Prisma.NestedIntFilter> = z.object({
-  equals: z.number().optional(),
-  in: z.number().array().optional(),
-  notIn: z.number().array().optional(),
-  lt: z.number().optional(),
-  lte: z.number().optional(),
-  gt: z.number().optional(),
-  gte: z.number().optional(),
-  not: z.union([ z.number(),z.lazy(() => NestedIntFilterSchema) ]).optional(),
-}).strict();
-
 export const NestedUuidWithAggregatesFilterSchema: z.ZodType<Prisma.NestedUuidWithAggregatesFilter> = z.object({
   equals: z.string().optional(),
   in: z.string().array().optional(),
@@ -1186,6 +1122,17 @@ export const NestedUuidWithAggregatesFilterSchema: z.ZodType<Prisma.NestedUuidWi
   _count: z.lazy(() => NestedIntFilterSchema).optional(),
   _min: z.lazy(() => NestedStringFilterSchema).optional(),
   _max: z.lazy(() => NestedStringFilterSchema).optional()
+}).strict();
+
+export const NestedIntFilterSchema: z.ZodType<Prisma.NestedIntFilter> = z.object({
+  equals: z.number().optional(),
+  in: z.number().array().optional(),
+  notIn: z.number().array().optional(),
+  lt: z.number().optional(),
+  lte: z.number().optional(),
+  gt: z.number().optional(),
+  gte: z.number().optional(),
+  not: z.union([ z.number(),z.lazy(() => NestedIntFilterSchema) ]).optional(),
 }).strict();
 
 export const NestedStringFilterSchema: z.ZodType<Prisma.NestedStringFilter> = z.object({
@@ -1302,33 +1249,6 @@ export const NestedUuidNullableWithAggregatesFilterSchema: z.ZodType<Prisma.Nest
   _max: z.lazy(() => NestedStringNullableFilterSchema).optional()
 }).strict();
 
-export const NestedIntWithAggregatesFilterSchema: z.ZodType<Prisma.NestedIntWithAggregatesFilter> = z.object({
-  equals: z.number().optional(),
-  in: z.number().array().optional(),
-  notIn: z.number().array().optional(),
-  lt: z.number().optional(),
-  lte: z.number().optional(),
-  gt: z.number().optional(),
-  gte: z.number().optional(),
-  not: z.union([ z.number(),z.lazy(() => NestedIntWithAggregatesFilterSchema) ]).optional(),
-  _count: z.lazy(() => NestedIntFilterSchema).optional(),
-  _avg: z.lazy(() => NestedFloatFilterSchema).optional(),
-  _sum: z.lazy(() => NestedIntFilterSchema).optional(),
-  _min: z.lazy(() => NestedIntFilterSchema).optional(),
-  _max: z.lazy(() => NestedIntFilterSchema).optional()
-}).strict();
-
-export const NestedFloatFilterSchema: z.ZodType<Prisma.NestedFloatFilter> = z.object({
-  equals: z.number().optional(),
-  in: z.number().array().optional(),
-  notIn: z.number().array().optional(),
-  lt: z.number().optional(),
-  lte: z.number().optional(),
-  gt: z.number().optional(),
-  gte: z.number().optional(),
-  not: z.union([ z.number(),z.lazy(() => NestedFloatFilterSchema) ]).optional(),
-}).strict();
-
 export const Habits_completionsCreateWithoutHabitsInputSchema: z.ZodType<Prisma.Habits_completionsCreateWithoutHabitsInput> = z.object({
   id: z.string(),
   user_id: z.string(),
@@ -1385,6 +1305,7 @@ export const HabitsCreateWithoutHabits_completionsInputSchema: z.ZodType<Prisma.
   habit_type: z.lazy(() => habit_typeSchema).optional().nullable(),
   period: z.lazy(() => periodSchema).optional().nullable(),
   amount: z.number().optional().nullable(),
+  habit_order2: z.number().optional().nullable(),
   time: z.coerce.date().optional().nullable(),
   monday: z.boolean().optional().nullable(),
   tuesday: z.boolean().optional().nullable(),
@@ -1406,9 +1327,7 @@ export const HabitsCreateWithoutHabits_completionsInputSchema: z.ZodType<Prisma.
   thursday_not_id: z.string(),
   friday_not_id: z.string(),
   saturday_not_id: z.string(),
-  sunday_not_id: z.string(),
-  habit_order: z.number().optional().nullable(),
-  habit_order2: z.number()
+  sunday_not_id: z.string()
 }).strict();
 
 export const HabitsUncheckedCreateWithoutHabits_completionsInputSchema: z.ZodType<Prisma.HabitsUncheckedCreateWithoutHabits_completionsInput> = z.object({
@@ -1416,6 +1335,7 @@ export const HabitsUncheckedCreateWithoutHabits_completionsInputSchema: z.ZodTyp
   habit_type: z.lazy(() => habit_typeSchema).optional().nullable(),
   period: z.lazy(() => periodSchema).optional().nullable(),
   amount: z.number().optional().nullable(),
+  habit_order2: z.number().optional().nullable(),
   time: z.coerce.date().optional().nullable(),
   monday: z.boolean().optional().nullable(),
   tuesday: z.boolean().optional().nullable(),
@@ -1437,9 +1357,7 @@ export const HabitsUncheckedCreateWithoutHabits_completionsInputSchema: z.ZodTyp
   thursday_not_id: z.string(),
   friday_not_id: z.string(),
   saturday_not_id: z.string(),
-  sunday_not_id: z.string(),
-  habit_order: z.number().optional().nullable(),
-  habit_order2: z.number()
+  sunday_not_id: z.string()
 }).strict();
 
 export const HabitsCreateOrConnectWithoutHabits_completionsInputSchema: z.ZodType<Prisma.HabitsCreateOrConnectWithoutHabits_completionsInput> = z.object({
@@ -1457,6 +1375,7 @@ export const HabitsUpdateWithoutHabits_completionsInputSchema: z.ZodType<Prisma.
   habit_type: z.union([ z.lazy(() => habit_typeSchema),z.lazy(() => NullableEnumhabit_typeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   period: z.union([ z.lazy(() => periodSchema),z.lazy(() => NullableEnumperiodFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   amount: z.union([ z.number(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  habit_order2: z.union([ z.number(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   monday: z.union([ z.boolean(),z.lazy(() => NullableBoolFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   tuesday: z.union([ z.boolean(),z.lazy(() => NullableBoolFieldUpdateOperationsInputSchema) ]).optional().nullable(),
@@ -1479,8 +1398,6 @@ export const HabitsUpdateWithoutHabits_completionsInputSchema: z.ZodType<Prisma.
   friday_not_id: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   saturday_not_id: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   sunday_not_id: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  habit_order: z.union([ z.number(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  habit_order2: z.union([ z.number(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const HabitsUncheckedUpdateWithoutHabits_completionsInputSchema: z.ZodType<Prisma.HabitsUncheckedUpdateWithoutHabits_completionsInput> = z.object({
@@ -1488,6 +1405,7 @@ export const HabitsUncheckedUpdateWithoutHabits_completionsInputSchema: z.ZodTyp
   habit_type: z.union([ z.lazy(() => habit_typeSchema),z.lazy(() => NullableEnumhabit_typeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   period: z.union([ z.lazy(() => periodSchema),z.lazy(() => NullableEnumperiodFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   amount: z.union([ z.number(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  habit_order2: z.union([ z.number(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   time: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   monday: z.union([ z.boolean(),z.lazy(() => NullableBoolFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   tuesday: z.union([ z.boolean(),z.lazy(() => NullableBoolFieldUpdateOperationsInputSchema) ]).optional().nullable(),
@@ -1510,8 +1428,6 @@ export const HabitsUncheckedUpdateWithoutHabits_completionsInputSchema: z.ZodTyp
   friday_not_id: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   saturday_not_id: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   sunday_not_id: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  habit_order: z.union([ z.number(),z.lazy(() => NullableIntFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  habit_order2: z.union([ z.number(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const Habits_completionsCreateManyHabitsInputSchema: z.ZodType<Prisma.Habits_completionsCreateManyHabitsInput> = z.object({
@@ -1782,6 +1698,10 @@ export const tableSchemas = {
         "INT4"
       ],
       [
+        "habit_order2",
+        "INT4"
+      ],
+      [
         "time",
         "TIME"
       ],
@@ -1868,14 +1788,6 @@ export const tableSchemas = {
       [
         "sunday_not_id",
         "UUID"
-      ],
-      [
-        "habit_order",
-        "INT4"
-      ],
-      [
-        "habit_order2",
-        "INT4"
       ]
     ]),
     relations: [

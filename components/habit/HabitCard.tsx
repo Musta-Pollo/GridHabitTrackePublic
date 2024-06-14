@@ -47,35 +47,31 @@ export default function HabitCard({
     return <HabitCardListeningForHabitChanges habitId={habitId} />;
 
   return (
-    <TouchableOpacity
-      disabled={!enableOnTap}
-      onPress={() => {
-        let date = new Date("2024-5-13");
-
-        router.navigate(`/habit/${habitId}`);
-      }}
+    <View
+      className={`p-2 rounded-xl ${
+        Platform.OS === "web" && rightMarginOnWeb ? "mr-6" : ""
+      } flex flex-col bg-background19 mb-4`}
     >
-      <View
-        className={`p-2 rounded-xl ${
-          Platform.OS === "web" && rightMarginOnWeb ? "mr-6" : ""
-        } flex flex-col bg-background19 mb-4`}
+      <HabitCardListeningForHabitChanges habitId={habitId} />
+      <TouchableOpacity
+        disabled={!enableOnTap}
+        onPress={() => {
+          let date = new Date("2024-5-13");
+
+          router.navigate(`/habit/${habitId}`);
+        }}
       >
-        <HabitCardListeningForHabitChanges habitId={habitId} />
         <HabitCardHeader habit={habit} />
+      </TouchableOpacity>
 
-        {showGrid && (
-          <>
-            <View className="h-2" />
-            <CompletionHeatmap habit={habit} />
-          </>
-        )}
-      </View>
-    </TouchableOpacity>
+      {showGrid && (
+        <>
+          <View className="h-2" />
+          <CompletionHeatmap habit={habit} />
+        </>
+      )}
+    </View>
   );
-}
-
-interface HabitCardHeaderProps {
-  habit: HabitWithCompletions;
 }
 
 export function HabitCardHeader({ habit }: HabitCardHeaderProps) {
@@ -153,9 +149,6 @@ export function HabitCardListeningForHabitChanges({
               date: true,
             },
           },
-        },
-        orderBy: {
-          habit_order: "asc",
         },
       }),
     [db, habitId]

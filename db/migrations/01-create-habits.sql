@@ -34,6 +34,7 @@ CREATE TABLE habits (
     habit_type habit_type,
     period period,
     amount INTEGER,
+    habit_order2 INTEGER,
     time TIME,
     monday BOOLEAN,
     tuesday BOOLEAN,
