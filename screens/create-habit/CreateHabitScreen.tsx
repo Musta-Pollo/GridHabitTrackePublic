@@ -55,6 +55,7 @@ export default function CreateHabitScreen() {
   const createHabit = useStore((state) => state.createHabit);
   const setHabitType = useStore((state) => state.createHabit.setHabitType);
   const setTeam = useStore((state) => state.createHabit.setTeam);
+  const resetNotifications = useStore((state) => state.pickNotifications.reset);
   const toggleCompleter = useStore(
     (state) => state.createHabit.toggleCompleter
   );
@@ -377,6 +378,7 @@ export default function CreateHabitScreen() {
           <InputCustom
             label="Notifications"
             onPress={() => {
+              resetNotifications(createHabit.notifications);
               router.push("/pick-notifications/");
             }}
           >

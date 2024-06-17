@@ -19,7 +19,13 @@
     },
     "production": {
       "distribution": "store",
-      "autoIncrement": true
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_ELECTRIC_SERVICE": "http://localhost:5133",
+        "EXPO_PUBLIC_ELECTRIC_PG_PROXY_PORT": "65432",
+        "EXPO_PUBLIC_SUPABASE_URL": "https://xxxxx.supabase.co",
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "xxxxx"
+      }
       
     }
   },

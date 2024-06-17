@@ -26,6 +26,11 @@ export const pickNotificationsState: StateSlice<PickNotificationsStateType> = (
   get
 ) => ({
   ...initialPickNotificationsState,
+  reset(notifications) {
+    set((state) => {
+      state.pickNotifications.notifications = notifications;
+    });
+  },
   toggleNotificationDay: (day) => {
     set((state) => {
       console.log("Day: ", day);

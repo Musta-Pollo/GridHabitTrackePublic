@@ -99,6 +99,7 @@ export interface PickNotificationsStateActions {
   setNotificationTime: (time: Date) => void;
   timeString: () => string;
   datesTimeString: () => string;
+  reset: (state: Notifications) => void;
 }
 
 export type PickNotificationsStateType = PickNotificationsStateDefinition &
